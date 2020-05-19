@@ -1,0 +1,14 @@
+
+{
+    "name": "HttpServer1",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "https://consumption.azure.com/v3/enrollments/9999999/usagedetails/download?billingPeriod=202002",
+            "enableServerCertificateValidation": true,
+            "authenticationType": "Anonymous"
+        }
+    }
+}
