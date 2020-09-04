@@ -1,0 +1,53 @@
+SELECT
+    top 100 * 
+FROM
+    OPENROWSET(
+        BULK 'https://azurebillingadls01.dfs.core.windows.net/azurebilling/csv_withallheaders/5d7e11e1-9589-46a0-ae9b-dd92972cdec4.csv',
+        FORMAT = 'CSV',
+        PARSER_VERSION='2.0',
+        FIRSTROW=3
+    ) 
+    WITH 
+    (
+AccountId           VARCHAR(20),
+AccountName         VARCHAR(20),
+AccountOwnerEmail   VARCHAR(50),
+AdditionalInfo      VARCHAR(400),
+ConsumedQuantity    VARCHAR(400),
+ConsumedService     VARCHAR(400),
+ConsumedServiceId   VARCHAR(400),
+Cost                VARCHAR(400),
+CostCenter          VARCHAR(400),
+Date1               VARCHAR(20),
+DepartmentId        VARCHAR(400),
+DepartmentName      VARCHAR(400),
+InstanceId          VARCHAR(400),
+MeterCategory       VARCHAR(400),
+MeterId             VARCHAR(400),
+MeterName           VARCHAR(400),
+MeterRegion         VARCHAR(400),
+MeterSubCategory    VARCHAR(400),
+Product             VARCHAR(400),
+ProductId           VARCHAR(50),
+ResourceGroup       VARCHAR(100),
+ResourceLocation    VARCHAR(40),
+ResourceLocationId  VARCHAR(400),
+ResourceRate        VARCHAR(400),
+ServiceAdministratorId  VARCHAR(400),
+ServiceInfo1            VARCHAR(400),
+ServiceInfo2            VARCHAR(400),
+StoreServiceIdentifier  VARCHAR(400),
+SubscriptionGuid        VARCHAR(400),
+SubscriptionId          VARCHAR(100),
+SubscriptionName        VARCHAR(100),
+Tags                    VARCHAR(400),
+UnitOfMeasure           VARCHAR(20),
+PartNumber              VARCHAR(20),
+ResourceGuid            VARCHAR(50),
+OfferId                 VARCHAR(20),
+ChargesBilledSeparately  VARCHAR(20),
+Location                VARCHAR(20),
+ServiceName             VARCHAR(400),
+ServiceTier             VARCHAR(400)
+    )
+    AS r
