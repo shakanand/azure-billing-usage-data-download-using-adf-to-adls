@@ -21,9 +21,9 @@ FROM
 		MeterId				VARCHAR(100),
 		MeterName			VARCHAR(100),
 		MeterRegion			VARCHAR(100),
-		UsageQuantity		VARCHAR(100),
-		ResourceRate		VARCHAR(200),
-		PreTaxCost			VARCHAR(200),
+		UsageQuantity		FLOAT,
+		ResourceRate		FLOAT,
+		PreTaxCost			FLOAT,
 		ConsumedService		VARCHAR(100),
 		ResourceType		VARCHAR(100),
 		InstanceId			VARCHAR(600),
@@ -38,3 +38,18 @@ FROM
 		UnitOfMeasure		VARCHAR(100)
     )
     AS r
+
+
+	------
+	SELECT 
+foldername1,MAX(UsageDateTime) as MaxUsageDateTime FROM 
+(
+	SELECT
+		foldername1,filename1,COUNT(DISTINCT UsageDateTime) as UsageDateTime 
+	FROM 
+		vwCostAnalysisExportUsageDetails
+	GROUP BY 
+		foldername1,filename1
+) x
+GROUP BY x.foldername1
+
